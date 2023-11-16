@@ -85,6 +85,11 @@ class Callback:
             self._model.jax_state_sync()
         return self._model
 
+    @model.setter
+    def model(self, value):
+        if value is self._model:
+            raise AttributeError("Use Callback.set_model()` to change the callback model.")
+
     def on_batch_begin(self, batch, logs=None):
         """A backwards compatibility alias for `on_train_batch_begin`."""
 
